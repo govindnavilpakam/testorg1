@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Custom Case Creator Form">
+        <!--Allowing user to fill mandatory fields, as LDS is not available i.e. no lightning view/record/edit form-->
+        <!--Inputs like Subject,priority,description-->
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" value={subject} onchange={populateSubject} label="Enter Subject" placeholder="type your subject here..." required></lightning-input>
+
+            <lightning-combobox
+                name="priority"
+                label="Priority"
+                placeholder="Select Priority"
+                value={priority}
+                onchange={populatePriority}
+                options={options}>
+            </lightning-combobox>
+
+            <lightning-textarea name="description" value={description} onchange={populateDescription} label="Enter the issue you're facing" ></lightning-textarea>
+        </div>
+
+        <div class="slds-p-top_medium">
+            <lightning-button variant="brand" label="Create Case" onclick={createCase} title="Create Case" icon-name="utility:choice" class="slds-m-left_x-small"></lightning-button>
+        </div>
+
+        RecordTypeID is {recordTypeId}
+
+    </lightning-card>
+
+    
+    
+</template>

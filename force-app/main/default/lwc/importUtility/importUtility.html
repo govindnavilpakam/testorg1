@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Import Utility">
+        <img src={src}/>
+        {src}
+    </lightning-card>
+    The ID of the user is {userID}<br>
+    Does he have the permission to view setup? {hasPermission}<br>
+    The device is {deviceInfo}<br>
+    The language is {language}<br>
+    The locale is {locale}<br>
+    <template lwc:if={showInProd}>
+        Welcome to prod
+    </template>
+    <template lwc:else>
+        Welcome to sandbox
+    </template>
+</template>

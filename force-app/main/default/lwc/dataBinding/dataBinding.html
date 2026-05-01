@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="One Way Binding">
+        Hello {name}! <br>
+        You have {ageLeft} yrs before you expire!
+    </lightning-card>
+
+    <lightning-card title="Two Way Binding">
+        <lightning-input class="spacing" value= {expectedAge} onchange={showMyAge} type="text" label="Enter the age left"></lightning-input>
+    </lightning-card>
+    Value is {expectedAge}
+
+    <lightning-card class="slds-box slds-box_small" title="GETTER AND SETTER">
+        <p class="slds-box slds-box_small">{handleAgeLeft}</p>
+
+        <lightning-input type="number" onchange = {handleInputAge}>Click me</lightning-input>
+        <p>After setter is called : {handleAgeLeft}</p>
+    </lightning-card>
+
+</template>

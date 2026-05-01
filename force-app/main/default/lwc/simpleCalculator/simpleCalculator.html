@@ -1,0 +1,21 @@
+<template>
+  <div class = "sdls-box">
+    <p>Simple Calculator</p>
+    <lightning-input label="First Number" value={firstNumber} onblur={handleFirstNumber}></lightning-input>
+    <lightning-input label="Second Number" value={secondNumber} onblur={handleSecondNumber}></lightning-input>
+    <template lwc:if={isShowResult}>
+        <div class="slds-box ">
+            <span class={badgeClass}>
+                Result:{result}
+            </span>
+                
+        </div>
+    </template>
+    <div>
+        <lightning-button label = "Add" variant="brand" onclick={handleAddClick}></lightning-button>
+        <lightning-button label = "Sub" variant="success" onclick={handleSubClick}></lightning-button>
+        <lightning-button label = "Mul" variant="destructive" onclick={handleMulClick}></lightning-button>
+        <lightning-button label = "Div" onclick={handleDivClick}></lightning-button>
+    </div>
+  </div>  
+</template>

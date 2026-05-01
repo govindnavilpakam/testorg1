@@ -1,0 +1,15 @@
+<template>
+    <!--get all my cases from database that i queried into LWC and display in some sort of table-->
+
+    <lightning-card title="Oldest 20 cases">
+        <template for:each={caseList} for:item="caseRecord">
+            <li class="slds-p-left_small slds-p-bottom_small" key={caseRecord.Id}>
+                <b>{caseRecord.Subject}</b> - {caseRecord.Priority} - {caseRecord.Reason}
+            </li>
+        </template>
+        <template if:true={errorMessage}>
+            Error loading cases : {errorMessage}
+        </template>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,12 @@
+<template>
+    {userAddress}
+
+    {personalDetails}
+    <template for:each={personalDetails} for:item="detail">
+        <p key={detail.index}>GUID from parent: {detail.guid}</p>
+        Personal detail for: {detail.name}
+        <template for:each={detail.friends} for:item="friend">
+            {friend.id} - {friend.name}
+        </template>}
+    </template>
+</template>
