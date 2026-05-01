@@ -1,0 +1,13 @@
+<template>
+    <!--I need to fetch tasks for given subject-->
+    <!--I have recieved all the tasks for given subject, then I want to display it in list Status - RecordId - Description-->
+
+    <lightning-card title="Search Tasks by Subject">
+        <template for:each={taskList} for:item="Task">
+            <li key={Task.Id}>
+                <b>{Task.Id}</b> - {Task.Status} - {Task.Description} - {Task.Priority} - {Task.ActivityDate}
+            </li>    
+        </template>
+
+    </lightning-card>
+</template>
