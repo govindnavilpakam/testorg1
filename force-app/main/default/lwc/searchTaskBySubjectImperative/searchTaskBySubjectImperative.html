@@ -1,0 +1,46 @@
+<template>
+    <!--I want user to input a subject string, Once they do it,
+    I want them to click a button. When they click, i want to call a apex method. After aprex returns data,
+    I want to display on a table-->
+    <lightning-card title="Search Task by Subject Imperatively">
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input value={subject} type="text" onchange={handleSubjectChange} label="Enter your subject" placeholder="type here..." required></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button variant="brand" label="Search" title="Search" onclick={searchTasks} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+
+
+        <!--Display result on a table-->
+        <template lwc:if={isResultRecieved}>
+            <table class="slds-p-around_medium lgc-bg slds-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Subject</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>ActivityDate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={taskList} for:item="task">
+                        <tr key={task.Id}>
+                            <td>{task.Id}</td>
+                            <td>{task.Subject}</td>
+                            <td>{task.Priority}</td>
+                            <td>{task.Status}</td>
+                            <td>{task.ActivityDate}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+
+    </lightning-card>
+
+    
+    
+</template>
