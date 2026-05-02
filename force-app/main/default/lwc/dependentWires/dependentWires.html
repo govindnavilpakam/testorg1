@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="My Related Tasks">
+        <template lwc:if={taskFound}>
+            <template for:each={taskList} for:item="task">
+                <div key={task.id}>
+                    {task.Subject} - {task.ActivityDate} - {task.Description}<br>
+                </div>        
+            </template>
+
+        </template>
+    </lightning-card>
+</template>
