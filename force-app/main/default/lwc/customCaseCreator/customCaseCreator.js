@@ -6,8 +6,12 @@ import SUBJECT from '@salesforce/schema/Case.Subject';
 import PRIORITY from '@salesforce/schema/Case.Priority';
 import DESCRIPTION from '@salesforce/schema/Case.Description';
 import RECID from '@salesforce/schema/Case.RecordTypeId';
+import {NavigationMixin} from 'lightning/navigation';
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-export default class CustomCaseCreator extends LightningElement {
+
+
+export default class CustomCaseCreator extends NavigationMixin(LightningElement) {
 
 
     subject='';
@@ -72,10 +76,36 @@ export default class CustomCaseCreator extends LightningElement {
         let recordInput={apiName:CASE_OBJ.objectApiName,fields}
         await createRecord(recordInput)
         .then((record)=>{
-            alert("Your record has been successfully created "+record.id);
+            this.showToast('Success!','Your record has been successfully created','success','sticky');
+            // this.navigateToRecord(record.Id);
+            setTimeout(() => {
+                this.navigateToRecord(record.id);
+            }, 500);
         })
         .catch((error)=>{
             alert("Ache se dekhle lodu "+error.message.body);
         })
+    }
+
+
+    navigateToRecord(recordId){
+        this[NavigationMixin.Navigate]({
+            type:'standard__recordPage',
+            attributes:{
+                recordId:recordId,
+                objectApiName:'Case',
+                actionName:'view'
+            }
+        });
+    }
+
+    showToast(title,message,variant,mode) {
+    const event = new ShowToastEvent({
+      title: title,
+      message:message,
+      variant:variant,
+      mode: mode  
+    });
+    this.dispatchEvent(event);
     }
 }
