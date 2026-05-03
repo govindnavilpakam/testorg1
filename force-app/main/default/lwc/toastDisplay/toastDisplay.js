@@ -41,15 +41,6 @@ export default class ToastDisplay extends LightningElement {
     this.dispatchEvent(event);
     }
 
-    showError(title,message,variant,mode) {
-    const event = new ShowToastEvent({
-      title: title,
-      message:message,
-      variant:variant,
-      mode:mode 
-    });
-    this.dispatchEvent(event);
-    }
 
     
 }
